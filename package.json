@@ -4,12 +4,8 @@
   "description": "simple socket.io app testing",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "start": "node index.js",
-    "dev": "nodemon index.js"    
-=======
     "dev": "nodemon index.js"
->>>>>>> 231dac2aeb9585a7017968e5eef8548233d9b533
   },
   "author": "Ahsan",
   "license": "ISC",
