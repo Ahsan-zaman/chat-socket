@@ -1,2 +1,2 @@
 # chatapp
-Socket.io based chat app with simple usability
+**Socket.io based chat app with simple ui**
