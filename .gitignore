@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     
 >>>>>>> first commit
+=======
+    
+>>>>>>> 231dac2aeb9585a7017968e5eef8548233d9b533
 # Logs
 logs
 *.log
@@ -63,7 +67,11 @@ typings/
 
 # next.js build output
 <<<<<<< HEAD
+<<<<<<< HEAD
 .next
 =======
 .next
 >>>>>>> first commit
+=======
+.next
+>>>>>>> 231dac2aeb9585a7017968e5eef8548233d9b533
