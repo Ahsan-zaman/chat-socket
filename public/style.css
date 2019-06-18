@@ -20,6 +20,11 @@ html, input {
     "Lucida Grande",
     sans-serif;
 }
+body{
+    background-color: rgb(236, 235, 217);
+    background-image: url('./img/chat-bg.png');
+    background-size: 50%;
+}
 .page{
     width: 100vw;
     height: 100vh;
@@ -87,9 +92,6 @@ html, input {
     
 }
 .chat{
-    background-color: rgb(236, 235, 217);
-    background-image: url('./img/chat-bg.png');
-    background-size: 50%;
     display: none;
 }
 .chat .chatarea{
@@ -164,7 +166,7 @@ html, input {
     width: 100%;
     outline: none;
     border: none;
-    font-size: 150%;
+    font-size: 140%;
     padding: 0px 62px 0px 30px;
     background-color: rgba(256,256,256,1);
     border-radius: 30px;
@@ -191,8 +193,7 @@ html, input {
 }
 
 @media only screen and (max-width: 768px){
-    .chat{
-        background-color: rgb(255, 242, 227);
+    body{
         background-image: url('./img/chat-bg.png');
         background-size: cover;
     }
