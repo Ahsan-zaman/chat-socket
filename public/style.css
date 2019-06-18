@@ -33,6 +33,11 @@ html, input {
     background: -webkit-linear-gradient(top right, rgba(120, 75, 164, 1.0), rgba(102, 127, 230, 1.0));
     background: -moz-linear-gradient(top right, rgba(120, 75, 164, 1.0), rgba(102, 127, 230, 1.0));
     background: linear-gradient(to bottom left, rgba(120, 75, 164, 1.0), rgba(102, 127, 230, 1.0));
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 .login.page .form{
     height: 100%;
@@ -40,6 +45,7 @@ html, input {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: fixed;
 }
 .login.page .form h3{
     color: #fff;
@@ -83,7 +89,8 @@ html, input {
 .chat{
     background-color: rgb(236, 235, 217);
     background-image: url('./img/chat-bg.png');
-    background-size: 50%
+    background-size: 50%;
+    display: none;
 }
 .chat .chatarea{
     width: 100%;
