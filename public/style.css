@@ -84,21 +84,24 @@ body{
     color: #fff;
 }
 .page .log{
-    color: gray;
-    font-size: 70%;
     margin: 5px;
+    color: rgb(214, 41, 41);
     text-align: center;
-    background-color: #fff;
-    
+}
+.page .log div{
+    width: 26%;
+    margin: 0 auto;
+    background: rgba(256,256,256,.6);
+    box-shadow: -5px 5px 8px rgba(20,20,20,.2);
 }
 .chat{
     display: none;
+    background-color: rgba(248, 247, 228, 0.4)
 }
 .chat .chatarea{
     width: 100%;
     margin: 20px 0 60px 0;
     overflow-y: scroll;
-    background-color: rgba(256,256,256,.3)
 }
 .chatarea::-webkit-scrollbar{
     width:20px
@@ -126,10 +129,6 @@ body{
 }
 .messages .message div .messageBody{
     padding: 10px;
-    color: #fff;
-    background-color: rgba(0,0,0,.6);
-    box-shadow: -5px 5px 15px 0px rgba(0, 0, 0, 0.2);
-    
 }
 .messages .message div .messageBody .dateMsg{
     font-size: 50%;
@@ -138,11 +137,24 @@ body{
     display: inline-block;
     background: transparent;
 }
+.msgRight .messageBody .dateMsg {
+    color: rgba(0,0,0,.6) !important;
+}
 .messages .message div .username{
     padding: 5px;
     font-size: 80%;
     font-weight: 700;
     background: #fff;
+}
+.messages .message .msgRight .messageBody{
+    color: #000;
+    background-color: rgba(256,256,256,.6);
+    box-shadow: -6px 6px 5px 0px rgba(0, 0, 0, 0.3);
+}
+.messages .message .msgLeft .messageBody{
+    color: #fff;
+    background-color: rgba(0,0,0,.6);
+    box-shadow: -6px 6px 5px 0px rgba(0,0,0, 0.3);
 }
 .message .msgRight{
     justify-content: flex-end;
@@ -196,5 +208,11 @@ body{
     body{
         background-image: url('./img/chat-bg.png');
         background-size: cover;
+    }
+    .messages{
+        padding: 5px !important;
+    }
+    .messages .message div{
+        padding: 2vw ;
     }
 }

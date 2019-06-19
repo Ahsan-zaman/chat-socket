@@ -70,7 +70,8 @@ $(function() {
   
     // Log a message
       const log = (message, options) => {
-      var $el = $('<li>').addClass('log').text(message);
+        var $msgg = $('<div>').text(message)
+      var $el = $('<li>').addClass('log').append($msgg);
       addMessageElement($el, options);
     }
   
