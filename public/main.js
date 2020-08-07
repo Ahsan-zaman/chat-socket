@@ -3,8 +3,13 @@ $(function() {
     var TYPING_TIMER_LENGTH = 400; // ms
     var COLORS = [
       '#15184E', '#F91E4F', '#00A15B', '#EE4F00',
-      '#741D97', '#287099', '#EADF00', '#8F25CC',
+      '#741D97', '#287099', '#8F25CC',
       '#D82049', '#A023D1', '#42BAFF', '#03894F'
+    ];
+    var BG_COLORS = [
+      '#c1c3e8', '#fad9e0', '#c2eddb', '#fcdcca',
+      '#e9cef2', '#ccedff', '#f6e6ff',
+      '#ffe6eb', '#f7e6ff', '#e6f6ff', '#d9ffee'
     ];
   
     // Initialize variables
@@ -71,6 +76,11 @@ $(function() {
     // Log a message
       const log = (message, options) => {
         var $msgg = $('<div>').text(message)
+        if(!!options && options.type == 'joined'){
+          $msgg.addClass('joined')
+        }else{
+          $msgg.addClass('left')
+        }
       var $el = $('<li>').addClass('log').append($msgg);
       addMessageElement($el, options);
     }
@@ -93,9 +103,11 @@ $(function() {
       minutes = minutes < 10 ? '0'+minutes : minutes;
       var $dateMsg = $('<span class = "dateMsg"/>')
         .text( hours + ':' + minutes + ' ' + ampm)
+        let userColor = getUsernameColor(data.username);
       var $usernameDiv = $('<span class="username"/>')
         .text(data.username)
-        .css('color', getUsernameColor(data.username));
+        .css('color', userColor[0])
+        .css('background-color', userColor[1]);
       var $messageBodyDiv = $('<span class="messageBody">')
         .text(data.message)
         .append($dateMsg)
@@ -161,7 +173,11 @@ $(function() {
       } else {
         $messages.append($el);
       }
-      $('.chatarea').scrollTop($messages[0].scrollHeight)
+      window.scrollTo({
+        top: document.querySelector('html').scrollHeight,
+        left: 100,
+        behavior: 'smooth'
+      })
     }
   
     // Prevents input from having injected markup
@@ -205,7 +221,7 @@ $(function() {
       }
       // Calculate color
       var index = Math.abs(hash % COLORS.length);
-      return COLORS[index];
+      return [COLORS[index],BG_COLORS[index]];
     }
   
     // Keyboard events
@@ -260,13 +276,13 @@ $(function() {
   
     // Whenever the server emits 'user joined', log it in the chat body
     socket.on('user joined', (data) => {
-      log(data.username + ' joined');
+      log(data.username + ' joined',{type : 'joined'});
       addParticipantsMessage(data);
     });
   
     // Whenever the server emits 'user left', log it in the chat body
     socket.on('user left', (data) => {
-      log(data.username + ' left');
+      log(data.username + ' left',{type : 'left'});
       addParticipantsMessage(data);
       removeChatTyping(data);
     });
