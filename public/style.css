@@ -227,10 +227,6 @@ html::before{
 }
 
 @media only screen and (max-width: 768px){
-    body{
-        background-image: url('./img/chat-bg.png');
-        background-size: cover;
-    }
     .messages{
         padding: 5px !important;
     }
