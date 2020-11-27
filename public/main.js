@@ -33,9 +33,9 @@ $(function() {
     const addParticipantsMessage = (data) => {
       var message = '';
       if (data.numUsers === 1) {
-        message += "Active now : 1";
+        message += "1 active";
       } else {
-        message += "Active now : " + data.numUsers ;
+        message += data.numUsers + ' active' ;
       }
       $('.active').text(message)
     }
@@ -88,12 +88,12 @@ $(function() {
     // Adds the visual chat message to the message list
     const addChatMessage = (data, options) => {
       // Don't fade the message in if there is an 'X was typing'
-      var $typingMessages = getTypingMessages(data);
-      options = options || {};
-      if ($typingMessages.length !== 0) {
-        options.fade = false;
-        $typingMessages.remove();
-      }
+      // var $typingMessages = getTypingMessages(data);
+      // options = options || {};
+      // if ($typingMessages.length !== 0) {
+      //   options.fade = false;
+      //   $typingMessages.remove();
+      // }
       var date = new Date()
       var hours = date.getHours();
       var minutes = date.getMinutes();
@@ -112,7 +112,7 @@ $(function() {
         .text(data.message)
         .append($dateMsg)
   
-      var typingClass = data.typing ? 'typing' : '';
+      // var typingClass = data.typing ? 'typing' : '';
       var $meMsg = $("<div></div>")
       if(data.me == false){
         $meMsg
@@ -125,7 +125,7 @@ $(function() {
       }
       var $messageDiv = $('<li class="message"/>')
         .data('username', data.username)
-        .addClass(typingClass)
+        // .addClass(typingClass)
         .append($meMsg);
   
       addMessageElement($messageDiv, options);
@@ -135,7 +135,12 @@ $(function() {
     const addChatTyping = (data) => {
       data.typing = true;
       data.message = 'is typing';
-      addChatMessage(data);
+      // addChatMessage(data);
+      var $t = $('<span/>')
+        .text(`${data.username} is typing`)
+        .data('username', data.username)
+      console.log($t)
+      $('.typing').append($t)
     }
   
     // Removes the visual chat typing message
@@ -207,7 +212,7 @@ $(function() {
   
     // Gets the 'X is typing' messages of a user
     const getTypingMessages = (data) => {
-      return $('.typing.message').filter(function (i) {
+      return $('.typing span').filter(function (i) {
         return $(this).data('username') === data.username;
       });
     }
@@ -289,7 +294,10 @@ $(function() {
   
     // Whenever the server emits 'typing', show the typing message
     socket.on('typing', (data) => {
-      addChatTyping(data);
+      if(data.username){
+        addChatTyping(data);
+        console.log(data.username)
+      }
     });
   
     // Whenever the server emits 'stop typing', kill the typing message
